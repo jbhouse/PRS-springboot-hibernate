@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import entities.Status;
 
-public interface StatusRepository extends CrudRepository<Status, Integer> {
+public interface StatusRepository extends CrudRepository<Status, Long> {
 
 }

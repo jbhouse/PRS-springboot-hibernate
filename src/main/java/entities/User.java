@@ -19,13 +19,8 @@ import javax.persistence.OneToMany;
 public class User implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-    @OneToMany(fetch=FetchType.EAGER,cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "PurchaseRequest",
-            joinColumns = @JoinColumn(name = "id"),
-            inverseJoinColumns = @JoinColumn(name = "UserID")
-    )
+	private Long id;
+	@OneToMany(mappedBy="user",fetch=FetchType.EAGER,orphanRemoval = true)
 	private List<PurchaseRequest> purchaserequests;
 	private String UserName;
 	private String Password;
@@ -43,18 +38,19 @@ public class User implements Serializable {
 	public User() {}
 	
 	public List<PurchaseRequest> getpurchaserequests(){
-		return this.purchaserequests;
+//		return this.purchaserequests;
+		return null;
 	}
 	
 	public void setpurchaserequests(List<PurchaseRequest> prs) {
 		this.purchaserequests = prs;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -153,14 +149,14 @@ public class User implements Serializable {
 	public void setDateCreated(Timestamp dateCreated) {
 		DateCreated = dateCreated;
 	}
-//
-//	@Override
-//	public String toString() {
-//		return "User [id=" + id + ", UserName=" + UserName + ", Password="
-//				+ Password + ", FirstName=" + FirstName + ", LastName=" + LastName + ", Phone=" + Phone + ", Email="
-//				+ Email + ", IsReviewer=" + IsReviewer + ", IsAdmin=" + IsAdmin + ", IsActive=" + IsActive
-//				+ ", DateCreated=" + DateCreated + ", DateUpdated=" + DateUpdated + ", UpdatedByUser=" + UpdatedByUser
-//				+ "]";
-//	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", UserName=" + UserName + ", Password="
+				+ Password + ", FirstName=" + FirstName + ", LastName=" + LastName + ", Phone=" + Phone + ", Email="
+				+ Email + ", IsReviewer=" + IsReviewer + ", IsAdmin=" + IsAdmin + ", IsActive=" + IsActive
+				+ ", DateCreated=" + DateCreated + ", DateUpdated=" + DateUpdated + ", UpdatedByUser=" + UpdatedByUser
+				+ "]";
+	}
 	
 }

@@ -24,19 +24,14 @@ import javax.persistence.Table;
 public class PurchaseRequest implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	@ManyToOne
 	@JoinColumn(name="UserID")
 	private User user;
 	@ManyToOne
 	@JoinColumn(name="StatusID")
 	private Status status;
-    @OneToMany(fetch=FetchType.EAGER,cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "PurchaseRequestLineItem",
-            joinColumns = @JoinColumn(name = "id"),
-            inverseJoinColumns = @JoinColumn(name = "PurchaseRequestID")
-    )
+	@OneToMany(mappedBy="purchaserequest",fetch=FetchType.EAGER,orphanRemoval = true)
 	private List<PurchaseRequestLineItem> lineItems;
 	private String Description;
     private String Justification;
@@ -54,7 +49,8 @@ public class PurchaseRequest implements Serializable {
 	}
 	
 	public List<PurchaseRequestLineItem> getlineItems(){
-		return this.lineItems;
+//		return this.lineItems;
+		return null;
 	}
 		
 	public User getUser() {
@@ -73,11 +69,11 @@ public class PurchaseRequest implements Serializable {
 		this.status = status;
 	}
 	
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

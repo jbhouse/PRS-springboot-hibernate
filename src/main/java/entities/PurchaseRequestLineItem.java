@@ -16,7 +16,7 @@ import javax.persistence.Table;
 public class PurchaseRequestLineItem implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	@ManyToOne
 	@JoinColumn(name="PurchaseRequestID")
 	private PurchaseRequest purchaserequest;
@@ -29,11 +29,11 @@ public class PurchaseRequestLineItem implements Serializable {
     
     public PurchaseRequestLineItem() {}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

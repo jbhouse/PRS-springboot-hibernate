@@ -18,13 +18,8 @@ import javax.persistence.OneToMany;
 public class Status implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-    @OneToMany(fetch=FetchType.EAGER,cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "PurchaseRequest",
-            joinColumns = @JoinColumn(name = "id"),
-            inverseJoinColumns = @JoinColumn(name = "StatusID")
-    )
+	private Long id;
+	@OneToMany(mappedBy="status",fetch=FetchType.EAGER,orphanRemoval = true)
 	private List<PurchaseRequest> purchaserequests;
 	private String description;
 	private int UpdatedByUser;
@@ -34,18 +29,19 @@ public class Status implements Serializable {
 	}
 	
 	public List<PurchaseRequest> getpurchaserequests(){
-		return this.purchaserequests;
+//		return this.purchaserequests;
+		return null;
 	}
 	
 	public void setpurchaserequests(List<PurchaseRequest> prs) {
 		this.purchaserequests = prs;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

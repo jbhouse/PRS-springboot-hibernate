@@ -18,13 +18,8 @@ import javax.persistence.OneToMany;
 public class Vendor implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    @OneToMany(fetch=FetchType.EAGER,cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "Product",
-            joinColumns = @JoinColumn(name = "id"),
-            inverseJoinColumns = @JoinColumn(name = "VendorID")
-    )
+    private Long id;
+    @OneToMany(mappedBy="vendor",fetch=FetchType.EAGER,orphanRemoval = true)
 	private List<Product> products;
     private String code;
     private String Name;
@@ -45,17 +40,19 @@ public class Vendor implements Serializable {
 	
 //	public List<Product> getproducts(){
 //		return this.products;
+//		we need to return the products list. but the products list 
+//	returned cant contain vendors. else infinite loop
 //	}
 //	
 //	public void setproducts(List<Product> p) {
 //		this.products = p;
 //	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

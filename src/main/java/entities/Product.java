@@ -19,13 +19,8 @@ import javax.persistence.OneToMany;
 public class Product implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-    @OneToMany(fetch=FetchType.EAGER,cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "PurchaseRequestLineItem",
-            joinColumns = @JoinColumn(name = "id"),
-            inverseJoinColumns = @JoinColumn(name = "ProductID")
-    )
+	private Long id;
+	@OneToMany(mappedBy="product",fetch=FetchType.EAGER,orphanRemoval = true)
 	private List<PurchaseRequestLineItem> purchaserequestlineitems;
 	@ManyToOne
 	@JoinColumn(name="VendorID")
@@ -39,19 +34,20 @@ public class Product implements Serializable {
 	
 	public Product() {}
 	
-	public List<PurchaseRequestLineItem> getpurchaserequestlineitems(){
-		return this.purchaserequestlineitems;
-	}
-	
-	public void setpurchaserequestlineitems(List<PurchaseRequestLineItem> prs) {
-		this.purchaserequestlineitems = prs;
-	}
+//	public List<PurchaseRequestLineItem> getpurchaserequestlineitems(){
+////		return this.purchaserequestlineitems;
+//		return null;
+//	}
+//	
+//	public void setpurchaserequestlineitems(List<PurchaseRequestLineItem> prs) {
+//		this.purchaserequestlineitems = prs;
+//	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
