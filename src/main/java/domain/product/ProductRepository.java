@@ -1,4 +1,4 @@
-package product;
+package domain.product;
 
 import org.springframework.data.repository.CrudRepository;
 

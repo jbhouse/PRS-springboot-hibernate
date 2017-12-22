@@ -1,4 +1,4 @@
-package user;
+package domain.user;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
@@ -14,7 +14,7 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import purchaserequest.PurchaseRequest;
+import domain.purchaserequest.PurchaseRequest;
 
 
 @SuppressWarnings("serial")

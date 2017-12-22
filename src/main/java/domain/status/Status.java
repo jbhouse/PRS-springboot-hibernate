@@ -1,4 +1,4 @@
-package status;
+package domain.status;
 
 import java.io.Serializable;
 import java.util.List;
@@ -14,7 +14,7 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import purchaserequest.PurchaseRequest;
+import domain.purchaserequest.PurchaseRequest;
 
 @SuppressWarnings("serial")
 @Entity

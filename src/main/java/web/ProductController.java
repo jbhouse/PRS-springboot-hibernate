@@ -2,8 +2,8 @@ package web;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import product.Product;
-import product.ProductRepository;
+import domain.product.Product;
+import domain.product.ProductRepository;
 
 import java.util.List;
 
@@ -21,8 +21,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @RestController
 @RequestMapping("/Products")
-@EntityScan("entities")
-@EnableJpaRepositories("repositories")
+@EntityScan("domain")
+@EnableJpaRepositories("domain")
 public class ProductController extends BaseController {
 	
 	@Autowired

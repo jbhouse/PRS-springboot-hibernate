@@ -1,8 +1,6 @@
-package repositories;
+package domain.purchaserequest;
 
 import org.springframework.data.repository.CrudRepository;
-
-import entities.PurchaseRequest;
 
 public interface PurchaseRequestRepository extends CrudRepository<PurchaseRequest, Long> {
 

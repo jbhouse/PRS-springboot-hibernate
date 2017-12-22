@@ -2,8 +2,8 @@ package web;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import vendor.Vendor;
-import vendor.VendorRepository;
+import domain.vendor.Vendor;
+import domain.vendor.VendorRepository;
 
 import java.util.List;
 
@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @RestController
 @RequestMapping("/Vendors")
-@EntityScan("entities")
-@EnableJpaRepositories("repositories")
+@EntityScan("domain")
+@EnableJpaRepositories("domain")
 public class VendorController extends BaseController {
 	
 	@Autowired

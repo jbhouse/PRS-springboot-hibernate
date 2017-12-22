@@ -2,8 +2,8 @@ package web;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import status.Status;
-import status.StatusRepository;
+import domain.status.Status;
+import domain.status.StatusRepository;
 
 import java.util.List;
 
@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RestController
 @RequestMapping("/Status")
 //@ComponentScan(basePackages = {"repositories", "entities", "contollers"})
-@EntityScan("entities")
-@EnableJpaRepositories("repositories")
+@EntityScan("domain")
+@EnableJpaRepositories("domain")
 public class StatusController extends BaseController {
 	
 	@Autowired

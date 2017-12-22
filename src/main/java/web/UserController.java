@@ -2,8 +2,8 @@ package web;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import user.User;
-import user.UserRepository;
+import domain.user.User;
+import domain.user.UserRepository;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -24,8 +24,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @RestController
 @RequestMapping("/Users")
-@EntityScan("entities")
-@EnableJpaRepositories("repositories")
+@EntityScan("domain")
+@EnableJpaRepositories("domain")
 public class UserController extends BaseController {
 		
 	@Autowired

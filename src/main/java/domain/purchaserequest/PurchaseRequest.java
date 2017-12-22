@@ -1,4 +1,4 @@
-package purchaserequest;
+package domain.purchaserequest;
 
 import java.io.Serializable;
 import java.sql.Date;
@@ -19,8 +19,8 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import status.Status;
-import user.User;
+import domain.status.Status;
+import domain.user.User;
 
 @SuppressWarnings("serial")
 @Entity

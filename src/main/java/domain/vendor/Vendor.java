@@ -1,4 +1,4 @@
-package vendor;
+package domain.vendor;
 
 import java.io.Serializable;
 import java.util.List;
@@ -14,7 +14,7 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import product.Product;
+import domain.product.Product;
 
 @SuppressWarnings("serial")
 @Entity

@@ -1,14 +1,14 @@
-package hello;
+package util;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication(scanBasePackages= {
-		"repositories", "entities", "controllers"
+		"domain", "web"
 })
-public class RunApp {
+public class Application {
 	// this is the main method we want to run
     public static void main(String[] args) {
-        SpringApplication.run(RunApp.class, args);
+        SpringApplication.run(Application.class, args);
     }
 }

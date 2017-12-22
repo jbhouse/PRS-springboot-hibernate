@@ -2,9 +2,9 @@ package web;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import purchaserequest.PurchaseRequest;
-import purchaserequest.PurchaseRequestRepository;
-import vendor.Vendor;
+import domain.purchaserequest.PurchaseRequest;
+import domain.purchaserequest.PurchaseRequestRepository;
+import domain.vendor.Vendor;
 
 import java.util.List;
 
@@ -21,8 +21,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @RestController
 @RequestMapping("/PurchaseRequests")
-@EntityScan("entities")
-@EnableJpaRepositories("repositories")
+@EntityScan("domain")
+@EnableJpaRepositories("domain")
 public class PurchaseRequestController extends BaseController {
 	
 	@Autowired

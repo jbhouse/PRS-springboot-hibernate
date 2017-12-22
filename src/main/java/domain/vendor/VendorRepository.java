@@ -1,4 +1,4 @@
-package vendor;
+package domain.vendor;
 
 import org.springframework.data.repository.CrudRepository;
 

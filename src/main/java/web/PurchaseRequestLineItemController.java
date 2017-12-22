@@ -2,8 +2,8 @@ package web;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import purchaserequest.PurchaseRequestLineItem;
-import purchaserequest.PurchaseRequestLineItemRepository;
+import domain.purchaserequest.PurchaseRequestLineItem;
+import domain.purchaserequest.PurchaseRequestLineItemRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RestController
 @RequestMapping("/PurchaseRequestLineItems")
 //@ComponentScan(basePackages = {"repositories", "entities", "contollers"})
-@EntityScan("entities")
-@EnableJpaRepositories("repositories")
+@EntityScan("domain")
+@EnableJpaRepositories("domain")
 public class PurchaseRequestLineItemController {
 	
 	@Autowired
