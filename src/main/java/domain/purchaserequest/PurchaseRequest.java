@@ -24,7 +24,6 @@ import domain.user.User;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name="purchaserequest")
 public class PurchaseRequest implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -53,7 +52,7 @@ public class PurchaseRequest implements Serializable {
 	@JsonProperty("DateNeeded")
 	@Column(name="DateNeeded")
 	private Date dateNeeded;
-	@Column(name="SubmittedDateuser")
+	@Column(name="SubmittedDate")
 	@JsonProperty("SubmittedDate")
 	private Date submittedDate;
 	@JsonProperty("IsActive")
