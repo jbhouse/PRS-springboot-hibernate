@@ -39,8 +39,9 @@ public class UserController extends BaseController {
 		return getReturnArray(u);
 	}
 	
+
 	@GetMapping("/{id}")
-	public @ResponseBody List<User> Show(@PathVariable Long id) {
+	public @ResponseBody Iterable<User> Show(@PathVariable Long id) {
 		return getReturnArray(this.userRepository.findOne(id));
 	}
 
@@ -49,9 +50,8 @@ public class UserController extends BaseController {
     	return userRepository.findAll();
     }
     
-    @CrossOrigin(allowedHeaders="*",allowCredentials="true")
+//    @CrossOrigin(allowedHeaders="*",allowCredentials="true")
     @PostMapping("/Add")
-//    @RequestMapping(value = "/Add", method = RequestMethod.POST)
     public User Add (@RequestBody User user) {
     	user.setDateCreated(new Timestamp(System.currentTimeMillis()));
     	user.setDateUpdated(new Timestamp(System.currentTimeMillis()));
@@ -60,8 +60,23 @@ public class UserController extends BaseController {
         return null;
     }
 
-//    @PutMapping("{id}")
-//    public User update(...) {...}
+    @PutMapping("{id}")
+    public @ResponseBody Iterable<User> update(@PathVariable Long id, @RequestBody User usr) {
+    	User u = this.userRepository.findOne(id);
+    	if (u!=null) {
+			u.setFirstName(usr.getFirstName());
+			u.setUserName(usr.getUserName());
+			u.setLastName(usr.getLastName());
+			u.setIsActive(usr.getIsActive());
+			u.setIsReviewer(usr.getIsReviewer());
+			u.setIsAdmin(usr.getIsAdmin());
+			u.setPassword(usr.getPassword());
+			u.setPhone(usr.getPhone());
+			u.setEmail(usr.getEmail());
+			userRepository.save(u);
+    	}
+    	return null;
+    }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {

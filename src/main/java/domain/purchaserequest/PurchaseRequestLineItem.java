@@ -18,7 +18,6 @@ import domain.product.Product;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name="purchaserequestlineitem")
 public class PurchaseRequestLineItem implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
