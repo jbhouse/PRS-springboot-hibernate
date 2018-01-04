@@ -72,6 +72,7 @@ public class UserController extends BaseController {
 			u.setPassword(usr.getPassword());
 			u.setPhone(usr.getPhone());
 			u.setEmail(usr.getEmail());
+			u.setDateUpdated(new Timestamp(System.currentTimeMillis()));
 			userRepository.save(u);
     	}
     	return null;
