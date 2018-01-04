@@ -32,13 +32,11 @@ public class UserController extends BaseController {
 	@Autowired
 	private UserRepository userRepository;
 	
-	@GetMapping(path="/Authenticate") 
-	public @ResponseBody List<User> authenticate (@RequestParam String uname
-			, @RequestParam String pwd) {
+	@GetMapping("/Authenticate") 
+	public @ResponseBody List<User> authenticate (@RequestParam String uname, @RequestParam String pwd) {
 		User u = userRepository.findByUserNameAndPassword(uname, pwd);
 		return getReturnArray(u);
 	}
-	
 
 	@GetMapping("/{id}")
 	public @ResponseBody Iterable<User> Show(@PathVariable Long id) {
