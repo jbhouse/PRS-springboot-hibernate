@@ -50,7 +50,6 @@ public class UserController extends BaseController {
     	return userRepository.findAll();
     }
     
-//    @CrossOrigin(allowedHeaders="*",allowCredentials="true")
     @PostMapping("/Add")
     public User Add (@RequestBody User user) {
     	user.setDateCreated(new Timestamp(System.currentTimeMillis()));
