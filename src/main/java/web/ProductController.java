@@ -7,6 +7,7 @@ import domain.product.ProductRepository;
 import domain.user.User;
 import domain.vendor.Vendor;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,8 @@ public class ProductController extends BaseController {
     
     @PostMapping("/Add")
     public @ResponseBody Product add (@RequestBody Product product) {
+    	product.setDateCreated(new Timestamp(System.currentTimeMillis()));
+    	product.setDateUpdated(new Timestamp(System.currentTimeMillis()));
         productRepository.save(product);
         System.out.println("Vendor saved:  "+product);
         return product;
@@ -62,6 +65,8 @@ public class ProductController extends BaseController {
 			p.setPrice(product.getPrice());
 			p.setUnit(product.getUnit());
 			p.setVendor(product.getVendor());
+	    	p.setDateUpdated(new Timestamp(System.currentTimeMillis()));
+
 			productRepository.save(p);
     	}
     	return null;

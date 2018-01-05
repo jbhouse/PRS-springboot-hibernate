@@ -1,6 +1,7 @@
 package domain.product;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -49,6 +50,12 @@ public class Product implements Serializable {
 	@JsonProperty("IsActive")
 	@Column(name="IsActive")
     private Boolean isActive;
+	@JsonProperty("DateCreated")
+	@Column(name="DateCreated")
+	private Timestamp dateCreated;
+	@JsonProperty("DateUpdated")
+	@Column(name="DateUpdated")
+	private Timestamp dateUpdated;
 	
 	public Product() {
 		isActive = true;
@@ -124,6 +131,22 @@ public class Product implements Serializable {
 
 	public void setIsActive(Boolean IsActive) {
 		isActive = IsActive;
+	}
+	
+	public Timestamp getDateCreated() {
+		return dateCreated;
+	}
+
+	public void setDateCreated(Timestamp dateCreated) {
+		this.dateCreated = dateCreated;
+	}
+
+	public Timestamp getDateUpdated() {
+		return dateUpdated;
+	}
+
+	public void setDateUpdated(Timestamp dateUpdated) {
+		this.dateUpdated = dateUpdated;
 	}
 
 	@Override

@@ -2,6 +2,7 @@ package domain.purchaserequest;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -14,7 +15,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -58,7 +58,16 @@ public class PurchaseRequest implements Serializable {
 	@JsonProperty("IsActive")
 	@Column(name="IsActive")
     private Boolean isActive;
-    
+    @JsonProperty("UpDatedByUser")
+    @Column(name="UpdatedByUser")
+    private long upDatedByUser;
+	@JsonProperty("DateCreated")
+	@Column(name="DateCreated")
+	private Timestamp dateCreated;
+	@JsonProperty("DateUpdated")
+	@Column(name="DateUpdated")
+	private Timestamp dateUpdated;
+
 	public PurchaseRequest() {}
 	
 	public void setlineItems(List<PurchaseRequestLineItem> lis) {
@@ -147,6 +156,38 @@ public class PurchaseRequest implements Serializable {
 
 	public void setSubmittedDate() {
 		submittedDate = Date.valueOf(LocalDate.now());
+	}
+	
+	public long getUpdatedByUser() {
+		return upDatedByUser;
+	}
+	
+	public void setUpdatedByUser(long updatingUser) {
+		upDatedByUser = updatingUser;
+	}
+	
+	public Timestamp getDateCreated() {
+		return dateCreated;
+	}
+
+	public void setDateCreated(Timestamp dateCreated) {
+		this.dateCreated = dateCreated;
+	}
+
+	public Timestamp getDateUpdated() {
+		return dateUpdated;
+	}
+
+	public void setDateUpdated(Timestamp dateUpdated) {
+		this.dateUpdated = dateUpdated;
+	}
+
+	public void setDateNeeded(Date dateNeeded) {
+		this.dateNeeded = dateNeeded;
+	}
+
+	public void setSubmittedDate(Date submittedDate) {
+		this.submittedDate = submittedDate;
 	}
 
 	@Override

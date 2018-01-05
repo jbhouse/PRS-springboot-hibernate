@@ -61,7 +61,7 @@ public class User implements Serializable {
 	private Timestamp dateUpdated;
 	@JsonProperty("UpdatedByUser")
 	@Column(name="UpdatedByUser")
-	private int updatedByUser;
+	private long updatedByUser;
 
 	public User() {}
 
@@ -169,11 +169,11 @@ public class User implements Serializable {
 		this.dateUpdated = dateUpdated;
 	}
 
-	public int getUpdatedByUser() {
+	public long getUpdatedByUser() {
 		return updatedByUser;
 	}
 
-	public void setUpdatedByUser(int updatedByUser) {
+	public void setUpdatedByUser(long updatedByUser) {
 		this.updatedByUser = updatedByUser;
 	}
 
