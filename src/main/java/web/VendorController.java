@@ -53,7 +53,6 @@ public class VendorController extends BaseController {
 			v.setCode(vendor.getCode());
 			v.setName(vendor.getName());
 			v.setAddress(vendor.getAddress());
-			v.setIsActive(vendor.getIsActive());
 			v.setCity(vendor.getCity());
 			v.setZip(vendor.getZip());
 			v.setPhone(vendor.getPhone());
