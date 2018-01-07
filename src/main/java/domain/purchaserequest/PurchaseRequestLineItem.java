@@ -1,6 +1,7 @@
 package domain.purchaserequest;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -27,20 +27,25 @@ public class PurchaseRequestLineItem implements Serializable {
 	@JsonIgnore
 	private PurchaseRequest purchaserequest;
 	@ManyToOne
-	@JsonProperty("ProductID")
 	@JoinColumn(name="ProductID")
 	private Product product;
-	@JsonProperty("Quantity")
+//	@JsonProperty("Quantity")
 	@Column(name="Quantity")
     private int quantity;
-	@JsonProperty("IsActive")
+//	@JsonProperty("IsActive")
 	@Column(name="IsActive")
     private Boolean isActive;
-	@JsonProperty("UpdatedByUser")
+//	@JsonProperty("UpdatedByUser")
 	@Column(name="UpdatedByUser")
     private int updatedByUser;
-    
-    public PurchaseRequestLineItem() {}
+//	@JsonProperty("DateCreated")
+	@Column(name="DateCreated")
+	private Timestamp dateCreated;
+//	@JsonProperty("DateUpdated")
+	@Column(name="DateUpdated")
+	private Timestamp dateUpdated;
+
+	public PurchaseRequestLineItem() {}
 
 	public Long getId() {
 		return id;
@@ -88,6 +93,22 @@ public class PurchaseRequestLineItem implements Serializable {
 
 	public void setUpdatedByUser(int UpdatedByUser) {
 		updatedByUser = UpdatedByUser;
+	}
+	
+    public Timestamp getDateCreated() {
+		return dateCreated;
+	}
+
+	public void setDateCreated(Timestamp dateCreated) {
+		this.dateCreated = dateCreated;
+	}
+
+	public Timestamp getDateUpdated() {
+		return dateUpdated;
+	}
+
+	public void setDateUpdated(Timestamp dateUpdated) {
+		this.dateUpdated = dateUpdated;
 	}
 
 	@Override

@@ -3,9 +3,8 @@ package web;
 import org.springframework.web.bind.annotation.RestController;
 
 import domain.purchaserequest.PurchaseRequest;
+import domain.purchaserequest.PurchaseRequestLineItem;
 import domain.purchaserequest.PurchaseRequestRepository;
-import domain.user.User;
-import domain.vendor.Vendor;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -43,15 +42,23 @@ public class PurchaseRequestController extends BaseController {
     	return purchaseRequestRepository.findAll();
     }
     
+    @GetMapping("/LineItems/{id}")
+	public @ResponseBody Iterable<PurchaseRequestLineItem> ListLineItems(long id) {
+    	return purchaseRequestRepository.findOne(id).getlineItems();
+    }
+    
     @PostMapping("/Add") 
     public @ResponseBody PurchaseRequest create(@RequestBody PurchaseRequest purchaseRequest) {
+    	purchaseRequest.setDateCreated(new Timestamp(System.currentTimeMillis()));
+    	purchaseRequest.setDateUpdated(new Timestamp(System.currentTimeMillis()));
+    	purchaseRequest.setSubmittedDate();
         purchaseRequestRepository.save(purchaseRequest);
         System.out.println("Vendor saved:  "+purchaseRequest);
         return purchaseRequest;
     }
     
     @PutMapping("{id}")
-    public @ResponseBody Iterable<User> update(@PathVariable Long id, @RequestBody PurchaseRequest purchaserequest) {
+    public @ResponseBody Iterable<PurchaseRequest> update(@PathVariable Long id, @RequestBody PurchaseRequest purchaserequest) {
     	PurchaseRequest pr = this.purchaseRequestRepository.findOne(id);
     	if (pr!=null) {
     		pr.setStatus(purchaserequest.getStatus());
