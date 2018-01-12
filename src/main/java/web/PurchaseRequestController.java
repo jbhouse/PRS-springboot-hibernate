@@ -43,7 +43,7 @@ public class PurchaseRequestController extends BaseController {
     }
     
     @GetMapping("/LineItems/{id}")
-	public @ResponseBody Iterable<PurchaseRequestLineItem> ListLineItems(long id) {
+	public @ResponseBody Iterable<PurchaseRequestLineItem> ListLineItems(@PathVariable Long id) {
     	return purchaseRequestRepository.findOne(id).getlineItems();
     }
     
