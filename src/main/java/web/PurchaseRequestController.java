@@ -49,6 +49,7 @@ public class PurchaseRequestController extends BaseController {
     
     @PostMapping("/Add") 
     public @ResponseBody PurchaseRequest create(@RequestBody PurchaseRequest purchaseRequest) {
+    	System.out.println(purchaseRequest);
     	purchaseRequest.setDateCreated(new Timestamp(System.currentTimeMillis()));
     	purchaseRequest.setDateUpdated(new Timestamp(System.currentTimeMillis()));
     	purchaseRequest.setSubmittedDate();

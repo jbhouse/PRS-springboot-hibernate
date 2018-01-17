@@ -41,6 +41,9 @@ public class VendorController extends BaseController {
     
     @PostMapping("/Add") 
     public Vendor Add (@RequestBody Vendor vendor) {
+    	System.out.println("----------------------------------------");
+    	System.out.println(vendor);
+    	System.out.println("----------------------------------------");
         vendorRepository.save(vendor);
         System.out.println("Vendor saved:  "+vendor);
         return null;
